@@ -16,11 +16,20 @@ public class Main {
         try{
             connection=DriverManager.getConnection(url, usuario1, contrasenia1);
             /*Sentencia de actualización*/
-            String consulta2 = "update estudiantePoo set b1 = ? where cedula = ?";
+            /*String consulta2 = "update estudiantePoo set b1 = ? where cedula = ?";
             consulta = connection.prepareStatement(consulta2);
             consulta.setDouble(1, 12.56);
-            consulta.setString(2, "3989134597");
-            consulta.executeUpdate();
+            consulta.setString(2, "3989134597");*/
+            /*Eliminar*/
+            String consulta2 = "delete from estudiantePoo where cedula = ?";
+            consulta = connection.prepareStatement(consulta2);
+            consulta.setString(1, "0052717064");
+            int intento = consulta.executeUpdate();
+            if(intento>0){
+                System.out.println("Se ha eliminado el estudiante");
+            } else {
+                System.out.println("No se ha eliminado el estudiante");
+            }
         }
         catch(SQLException exception){
             System.out.println(exception.getMessage());
